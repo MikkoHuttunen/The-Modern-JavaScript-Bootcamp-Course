@@ -292,3 +292,94 @@ const shoppingCart = [
         quantity: 2
     }
 ];
+
+//Example 16 (Loops)
+
+//Basic for loop
+for (let i = 0; i < 10; i++) {
+    console.log(i);
+}
+
+const myStudents = [
+    {
+        firstName: "Zeus",
+        grade: 86
+    },
+    {
+        firstName: "Artemis",
+        grade: 97
+    },
+    {
+        firstName: "Hera",
+        grade: 72
+    },
+    {
+        firstName: "Apollo",
+        grade: 90
+    }
+];
+
+//For loop to print out object values
+for (let i = 0; i < myStudents.length; i++) {
+    let student = myStudents[i];
+    console.log(`${student.firstName} scored ${student.grade}`);
+}
+
+//Nested for loop
+for (let i = 1; i <= 5; i++) {
+    console.log("OUTER LOOP: ", i);
+    for (let j = 5; j >= 0; j -= 2) {
+        console.log("   INNER LOOP ", j);
+    }
+}
+
+let j = 0;
+
+//Basic while loop
+while (j <= 5) {
+    console.log(j);
+    j++;
+}
+
+const target = Math.floor(Math.random() * 3);
+let guess = Math.floor(Math.random() * 3);
+
+//Infinite while loop which can be break out
+while (true) {
+    console.log(`Target: ${target} Guess: ${guess}`);
+    guess = Math.floor(Math.random() * 3);
+    if (guess === target) {
+        break;
+    }
+}
+
+console.log(`Target: ${target} Guess: ${guess}`);
+
+let subreddits = ["soccer", "popheads", "cringe", "books"];
+
+//For of loop
+for (let sub of subreddits) {
+    console.log(sub);
+}
+
+const movieReviews = {
+    Arrival: 9.5,
+    Alien: 9,
+    Amelie: 8,
+    "In Bruges": 9,
+    Amadeus: 10,
+    "Kill Bill": 8,
+    "Little Miss Sunshine": 8.5,
+    Coraline: 7.5
+};
+
+//Iterates through keys and values of an object
+for (let movie of Object.keys(movieReviews)) {
+    console.log(movie, movieReviews[movie]);
+}
+
+//For in loop
+for (let movie in movieReviews) {
+    console.log(movie);
+    console.log(movieReviews[movie]);
+}
