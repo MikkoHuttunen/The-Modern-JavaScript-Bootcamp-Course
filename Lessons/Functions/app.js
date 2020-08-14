@@ -140,3 +140,60 @@ function getRandom(arr) {
 }
 
 console.log(getCard());
+
+//Function expressions
+
+const sum2 = function(x, y) {
+    return x + y;
+}
+
+console.log(sum2(5, 8));
+
+//Higher order functions
+
+function add(x, y) {
+    return x + y;
+}
+
+function subtract(x, y) {
+    return x - y;
+}
+
+function multiply(x, y) {
+    return x * y;
+}
+
+const divide2 = function(x, y) {
+    return x / y;
+}
+
+//Functions in an array
+const operations = [add, subtract, multiply, divide];
+
+console.log(operations[2] (100, 5));
+
+//Function that repeats given function
+function repeatFunction(func, times) {
+    for (let i = 0; i < times; i++) {
+        func();
+    }
+}
+
+function sayTheWords() {
+    console.log("I'm saying the words!");
+}
+
+repeatFunction(sayTheWords, 3);
+
+//Returns function
+function multiplyBy(num) {
+    return function(x) {
+        return x * num;
+    }
+}
+
+const triple = multiplyBy(3);
+const double = multiplyBy(2);
+
+console.log(double(5));
+console.log(triple(5));
