@@ -197,3 +197,33 @@ const double = multiplyBy(2);
 
 console.log(double(5));
 console.log(triple(5));
+
+//Arrow functions
+
+const squared = x => {
+    return x * x;
+}
+
+console.log(squared(5));
+
+//Multiple parameter must be in parenthesis
+const multiplied = (x, y) => {
+    return x * y;
+}
+
+console.log(multiplied(5, 10));
+
+//Arrow function without parameters
+const greetings = () => {
+    console.log("Hello!");
+}
+
+greetings();
+
+//Arrow functions that implicit return
+const squared2 = n => (
+    n * n
+)
+
+//implicit return in one line
+const squared3 = n => n * n;
