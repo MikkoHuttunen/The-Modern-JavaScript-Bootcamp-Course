@@ -13,7 +13,7 @@ module.exports = ({ req, errors }) => {
                     <form method="POST">
                         <h1 class="title">Sign Up</h1>
                         <div class="field">
-                            <label class="label"Email</label>
+                            <label class="label">Email</label>
                             <input required class="input" placeholder="Email" name="email" />
                             <p class="help is-danger">${getError(errors, 'email')}</p>
                         </div>
