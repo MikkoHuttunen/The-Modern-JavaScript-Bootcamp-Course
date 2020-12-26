@@ -1,3 +1,5 @@
+//Page layout for the admin panel
+
 module.exports = ({ content }) => {
     return `
         <!DOCTYPE html>

@@ -9,7 +9,6 @@ const productsRepo = require('../../repositories/products');
 const newProductTemplate = require('../../views/admin/products/new');
 const productsIndexTemplate = require('../../views/admin/products/index');
 const editProductTemplate = require('../../views/admin/products/edit');
-const middlewares = require('./middlewares');
 const { requireTitle, requirePrice } = require('./validators');
 
 //Routers
@@ -51,6 +50,32 @@ router.get('/admin/products/:id/edit', requireAuth, async (req, res) => {
 });
 
 //Edit product page post requests
-router.post('admin/products/:id/edit', requireAuth, async (req, res) => {});
+router.post('/admin/products/:id/edit', requireAuth, upload.single('image'), [requireTitle, requirePrice], handleErrors(editProductTemplate, async req => {
+    //Get product with given id for the template
+    const product = await productsRepo.getOne(req.params.id);
+    return { product };
+}), async (req, res) => {
+    const changes = req.body;
+
+    //Change image if provided
+    if (req.file) {
+        changes.image = req.file.buffer.toString('base64');
+    }
+
+    //Update product
+    try {
+        await productsRepo.update(req.params.id, changes);
+    } catch (err) {
+        return res.send('Could not find item');
+    }
+
+    res.redirect('/admin/products');
+});
+
+//Delete product
+router.post('/admin/products/:id/delete', requireAuth, async (req, res) => {
+    await productsRepo.delete(req.params.id);
+    res.redirect('/admin/products');
+});
 
 module.exports = router;
